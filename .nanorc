@@ -1,0 +1,27 @@
+include /usr/share/nano/sh.nanorc
+set titlecolor brightwhite,yellow
+set keycolor bold,brightwhite,normal
+set functioncolor bold,normal,normal
+set numbercolor bold,white,gray
+set errorcolor brightwhite,red
+set selectedcolor black,lightwhite
+set stripecolor black,white
+set statuscolor black,white
+bind ^c copy main
+bind ^v paste all
+bind ^x cut main
+bind ^z undo main
+bind ^y redo main
+bind ^f whereis main
+bind F3 findnext main
+bind ^h replace main
+bind ^q exit main
+set zap
+set tabsize 4
+set smarthome
+set linenumbers
+set mouse
+set autoindent
+bind ^a mark main
+set minibar
+set indicator

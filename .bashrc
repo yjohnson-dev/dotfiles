@@ -2,7 +2,7 @@
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
-        . /etc/bashrc
+    . /etc/bashrc
 fi
 
 # User specific environment
@@ -18,12 +18,24 @@ alias cp='cp -i'
 alias mv='mv -i'
 
 # Filesystem visualization commands
-alias ls='exa --group --color-scale -aF'
-alias ll='exa --long --header --group --color-scale -aF'
-alias tree1='exa --tree --level=1 --long --header -aF'
-alias tree2='exa --tree --level=2 --long --header -aF'
-alias tree3='exa --tree --level=3 --long --header -aF'
-alias tree='tree2'
+custom_ls() {
+    alias ls='__ls --group --color-scale -aF'
+    alias ll='__ls --long --header --group --color-scale -aF'
+    alias tree1='__ls --tree --level=1 --long --header -aF'
+    alias tree2='__ls --tree --level=2 --long --header -aF'
+    alias tree3='__ls --tree --level=3 --long --header -aF'
+    alias tree='tree2'
+}
+
+if [ command -v exa &> /dev/null ]; then
+    alias __ls=exa
+    custom_ls
+elif [ command -v eza &> /dev/null ]; then
+    alias __ls=eza
+    custom_ls
+else
+    alias __ls=ls
+fi
 
 # Miscellaneous command modifiers
 alias iplist='ip -br a'

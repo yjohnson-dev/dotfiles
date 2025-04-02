@@ -18,21 +18,22 @@ alias cp='cp -i'
 alias mv='mv -i'
 
 # Filesystem visualization commands
-custom_ls() {
+if command -v exa > /dev/null 2>&1; then
+    alias __ls=exa
     alias ls='__ls --group --color-scale -aF'
     alias ll='__ls --long --header --group --color-scale -aF'
     alias tree1='__ls --tree --level=1 --long --header -aF'
     alias tree2='__ls --tree --level=2 --long --header -aF'
     alias tree3='__ls --tree --level=3 --long --header -aF'
     alias tree='tree2'
-}
-
-if [ command -v exa &> /dev/null ]; then
-    alias __ls=exa
-    custom_ls
-elif [ command -v eza &> /dev/null ]; then
+elif command -v eza > /dev/null 2>&1; then
     alias __ls=eza
-    custom_ls
+    alias ls='__ls --group --color-scale -aF'
+    alias ll='__ls --long --header --group --color-scale -aF'
+    alias tree1='__ls --tree --level=1 --long --header -aF'
+    alias tree2='__ls --tree --level=2 --long --header -aF'
+    alias tree3='__ls --tree --level=3 --long --header -aF'
+    alias tree='tree2'
 else
     alias __ls=ls
 fi
